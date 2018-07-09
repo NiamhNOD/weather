@@ -65,5 +65,7 @@ ttk.Label(mainframe, textvariable=nowWS).grid(column=2, row=6, sticky=(W, E))
 ttk.Button(mainframe, text="Update", command=updateWeather).grid(column=2, row=7, sticky=(W, E))
 for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
 
+root.after(36000000, updateWeather)
+
 # run the frame loop
 root.mainloop()
