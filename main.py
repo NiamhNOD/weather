@@ -61,11 +61,16 @@ def updateWeather(firstTime):
 def updateWeatherCheck():
         currentTime = int(time.time())
         global timeToCheck
+<<<<<<< HEAD
         if(currentTime - timeToCheck) > 1800:
+=======
+        if(currentTime - timeToCheck) > 180:
+>>>>>>> c1fe269206bb7ac19c4ecab775d046b67a1d9d8d
             updateWeather(False)
         else:
             root.after(5000, updateWeatherCheck)
 
+<<<<<<< HEAD
 
 def updateClock():
     nowTime.set(time.strftime("%H:%M", time.localtime(time.time())))
@@ -75,3 +80,16 @@ def updateClock():
 updateClock()
 updateWeather(True)
 root.mainloop()
+=======
+
+def updateClock():
+    nowTime.set(time.strftime("%H:%M", time.localtime(time.time())))
+    root.after(1000, updateClock)
+
+# set the current weather for the labels
+updateClock()
+updateWeather(True)
+root.mainloop()
+
+# run the frame loop
+>>>>>>> c1fe269206bb7ac19c4ecab775d046b67a1d9d8d
