@@ -60,5 +60,7 @@ def getCurrentWeatherCork(darkskyKey):
     conn.commit()
     conn.close()
 
-    print('The current temperature is ' + str(temp) + 'C. It feels like '
-    + str(appTemp) + "C.")
+    localTime = time.localtime(seconds)
+    weatherReturn = {'temp':temp, 'summary':summary, 'time':localTime, 'precipProb':precipProb, 'hum':hum, 'windSpeed': windS}
+    print(weatherReturn['temp'])
+    return weatherReturn
