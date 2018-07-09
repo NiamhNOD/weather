@@ -34,27 +34,21 @@ def updateWeather():
     nowPrecip.set(str(currentWeather['precipProb']) + "% chance of rain.")
     nowHum.set(str(currentWeather['hum']) + " humidity.")
     nowWS.set(str(str(currentWeather['windSpeed']) + " mp/h windspeed"))
+    root.after(3600000, updateWeather)
 
 def updateClock():
     nowTime.set(time.strftime("%H:%M", time.localtime(time.time())))
-    root.after(15000, updateClock)
+    root.after(1000, updateClock)
 
 # set the current weather for the labels
 updateClock()
-nowUpdate.set("Current Weather Cork - Last updated at " + str(time.strftime("%H:%M", currentWeather['time'])))
-nowTemp.set(str(currentWeather['temp']) + " C in Cork")
-nowPrecip.set(str(currentWeather['precipProb']) + "% chance of rain.")
-nowHum.set(str(currentWeather['hum']) + " humidity.")
-nowWS.set(str(str(currentWeather['windSpeed']) + " mp/h windspeed"))
-
-
+updateWeather()
 
 # Create the tkinter frame
 mainframe = ttk.Frame(root, padding="3 3 12 12")
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
 mainframe.columnconfigure(0, weight=1)
 mainframe.rowconfigure(0, weight=1)
-print("doing stuff")
 # Set the frame labels for the weather
 ttk.Label(mainframe, textvariable=nowTime).grid(column=2, row=1, sticky=(W, E))
 ttk.Label(mainframe, textvariable=nowUpdate).grid(column=2, row=2, sticky=(W, E))
@@ -64,8 +58,6 @@ ttk.Label(mainframe, textvariable=nowHum).grid(column=2, row=5, sticky=(W, E))
 ttk.Label(mainframe, textvariable=nowWS).grid(column=2, row=6, sticky=(W, E))
 ttk.Button(mainframe, text="Update", command=updateWeather).grid(column=2, row=7, sticky=(W, E))
 for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
-
-root.after(36000000, updateWeather)
 
 # run the frame loop
 root.mainloop()

@@ -2,15 +2,6 @@ import requests
 import json
 import time
 import sqlite3
-import configparser
-
-def loadDarkskyKey():
-    # Open the config file to read in the Darksky key
-    config = configparser.ConfigParser()
-    config.read('config.ini')
-    darkskyKey = config['darksky']['darkskyKey']
-    return darkskyKey
-
 
 def getCurrentWeatherCork(darkskyKey):
     # Get the time for the API request from Darkysky
