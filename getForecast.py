@@ -54,3 +54,10 @@ def getForecastCork(darkskyKey):
      precipProb, tempHigh, tempLow, hum, press, windS, windB, cloudC))
     conn.commit()
     conn.close()
+
+    # Return the forecast data for display
+    forecastReturn = {'time': time, 'summary': summary, 'sunrise': sunriseTime,
+    'sunset': sunsetTime, 'precipProb': precipProb, 'precipInt': precipIn,
+    'tempHigh': tempHigh, 'tempLow': tempLow}
+    
+    return forecastReturn
